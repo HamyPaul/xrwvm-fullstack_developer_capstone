@@ -66,38 +66,22 @@ try {
     res.status(500).json({ error: 'Error fetching documents' });
   }
 });
-
-
 // Express route to fetch Dealers by a particular state
-<<<<<<< HEAD
-app.get('/fetchDealers/dealer/:state', async (req, res) => {
-//Write your code here
-try {
-    const documents = await Dealerships.find({state: req.params.state});
-=======
+
 app.get('/fetchDealers/dealers/:state', async (req, res) => {
 //Write your code here
-try {
-    const documents = await Dealerships.find({dealership: req.params.state});
->>>>>>> origin
-    res.json(documents);
-  } catch (error) {
-    res.status(500).json({ error: 'Error fetching documents' });
-  }
+    try {
+        const documents = await Dealerships.find({dealership: req.params.state});
+        res.json(documents);
+        } catch (error) {
+        res.status(500).json({ error: 'Error fetching documents' });
+        }
 });
-
 // Express route to fetch dealer by a particular id
-<<<<<<< HEAD
-app.get('/fetchDealer/dealer/:id', async (req, res) => {
-//Write your code here
-try {
-    const documents = await Dealerships.find({id: req.params.id});
-=======
 app.get('/fetchDealer/dealers/:id', async (req, res) => {
 //Write your code here
 try {
     const documents = await Dealerships.find({dealership: req.params.id});
->>>>>>> origin
     res.json(documents);
   } catch (error) {
     res.status(500).json({ error: 'Error fetching documents' });
