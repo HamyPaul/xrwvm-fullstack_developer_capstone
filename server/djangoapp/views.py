@@ -94,7 +94,7 @@ def get_cars(request):
 
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
-def get_dealerships(request):
+def get_dealerships(request,state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
     else:
@@ -107,8 +107,9 @@ def get_dealerships(request):
 def get_dealer_reviews(request,dealer_id):
      # if dealer id has been provided
     if(dealer_id):
-        endpoint = "/fetchReviews/dealer/"+str(dealer_id)
+        endpoint = "/fetchReviews/dealer/" + str(dealer_id)
         reviews = get_request(endpoint)
+        print(reviews)
         for review_detail in reviews:
             response = analyze_review_sentiments(review_detail['review'])
             print(response)
