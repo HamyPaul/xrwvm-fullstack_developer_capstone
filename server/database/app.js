@@ -1,11 +1,12 @@
+/*jshint esversion: 8 */
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const  cors = require('cors')
+const  cors = require('cors');
 const app = express()
 const port = 3030;
 
-app.use(cors())
+app.use(cors());
 app.use(require('body-parser').urlencoded({ extended: false }));
 
 const reviews_data = JSON.parse(fs.readFileSync("reviews.json", 'utf8'));
@@ -51,9 +52,9 @@ app.get('/fetchReviews', async (req, res) => {
 // Express route to fetch reviews by a particular dealer
 app.get('/fetchReviews/dealer/:id', async (req, res) => {
   try {
-    console.log(req.params.id)
+    console.log(req.params.id);
     const documents = await Reviews.find({dealership: req.params.id});
-    console.log(documents)
+    console.log(documents);
     res.json(documents);
   } catch (error) {
     res.status(500).json({ error: 'Error fetching documents' });
