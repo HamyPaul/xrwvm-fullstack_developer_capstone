@@ -12,10 +12,11 @@ class CarMake(models.Model):
 # Other fields as needed
 
     def __str__(self):
-        return self.name 
+        return self.name
 # Return the name as the string representation
-# Car Model 
-    
+# Car Model
+
+
 class CarModel(models.Model):
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE) 
 # Many-to-One relationship
@@ -24,17 +25,14 @@ class CarModel(models.Model):
         ('SEDAN', 'Sedan'),
         ('SUV', 'SUV'),
         ('WAGON', 'Wagon'),
-    # Add more choices as required
         ]
     type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
-    year = models.IntegerField(default=2023,
-    validators=[
-        MaxValueValidator(2023),
-        MinValueValidator(2015)
-        ])
+    year = models.IntegerField(default=2023, 
+                               validators=[
+                                   MaxValueValidator(2023),
+                                   MinValueValidator(2015)])
 # Other fields as needed
 
-
     def __str__(self):
-        return self.name  
+        return self.name
 # Return the name as the string representation
